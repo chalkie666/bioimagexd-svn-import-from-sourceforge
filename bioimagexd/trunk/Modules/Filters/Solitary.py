@@ -43,7 +43,8 @@ class SolitaryFilter(lib.ProcessingFilter.ProcessingFilter):
 		"""		   
 		lib.ProcessingFilter.ProcessingFilter.__init__(self, (1, 1))
 		self.vtkfilter = vtkbxd.vtkImageSolitaryFilter()
-		self.vtkfilter.AddObserver("ProgressEvent", self.updateProgress)
+		self.vtkfilter.AddObserver("ProgressEvent", lib.messenger.send)
+		lib.messenger.connect(self.vtkfilter, 'ProgressEvent', self.updateProgress)
 		self.descs = {"HorizontalThreshold": "X:", "VerticalThreshold": "Y:", \
 						"ProcessingThreshold": "Processing threshold:"}
 	
