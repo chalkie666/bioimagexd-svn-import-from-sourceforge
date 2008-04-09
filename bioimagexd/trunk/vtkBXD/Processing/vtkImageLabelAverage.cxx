@@ -135,6 +135,7 @@ void vtkImageLabelAverageExecute(vtkImageLabelAverage *self, int id,int NumberOf
           for(idxC = 0; idxC < maxC; idxC++ ) {
             scalar = *inPtr++;
             maskScalar = (unsigned long) *maskPtr++;
+
             
             if(maskScalar > n) {
                 n = maskScalar;
